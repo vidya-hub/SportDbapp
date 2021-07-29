@@ -25,7 +25,6 @@ class _SportsListPageState extends State<SportsListPage> {
     ApiService.getSportsLeagues(widget.countryName).then((value) {
       print(value);
     });
-    // print(widget.allSports);
   }
 
   String getSportUrl(String sportName) {
@@ -37,10 +36,6 @@ class _SportsListPageState extends State<SportsListPage> {
 
   bool searchEnabled = false;
   String filterString = "";
-  // _launchEmail() async {
-  //   launch(
-  //       "mailto:rakhi@aeologic.com?subject=TestEmail&body=How are you%20plugin");
-  // }
 
   _launchURL(String url) async {
     if (!url.contains('http')) {
@@ -66,12 +61,12 @@ class _SportsListPageState extends State<SportsListPage> {
         // actions: [Text(widget.countryName)],
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: _height,
+        width: _width,
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.01,
+              height: _height * 0.01,
             ),
             Container(
               child: Padding(
@@ -131,12 +126,6 @@ class _SportsListPageState extends State<SportsListPage> {
                         widget.countryName, filterString.trim())
                     : ApiService.getSportsLeagues(widget.countryName),
                 builder: (context, snapshot) {
-                  // if (searchEnabled && snapshot.hasData) {
-                  //   print("===========");
-                  //   print(snapshot.data.countrys);
-                  //   print("===========");
-                  //   // print("===========");
-                  // }
                   return snapshot.hasData
                       ? Container(
                           height: _height,
@@ -144,13 +133,6 @@ class _SportsListPageState extends State<SportsListPage> {
                               ? ListView.builder(
                                   itemCount: snapshot.data.countrys.length,
                                   itemBuilder: (context, index) {
-                                    // String imageUrl = widget.allSports
-                                    //     .where((element) => (element.strSport ==
-                                    //         snapshot
-                                    //             .data.countrys[index].strSport))
-                                    //     .first
-                                    //     .strSportThumb;
-
                                     return Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: MediaQuery.of(context)
@@ -192,7 +174,6 @@ class _SportsListPageState extends State<SportsListPage> {
                                           Positioned(
                                             top: _height * 0.12,
                                             left: _width * 0.03,
-                                            // alignment: Alignment.bottomLeft,
                                             child: Container(
                                               child: Row(
                                                 children: [
